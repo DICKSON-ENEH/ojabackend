@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express")
 const cors = require("cors")
-const port = 5555
+const port =process.env.PORT || 5555
 const app = express()
 const mongoose = require("mongoose")
 mongoose.connect(process.env.URL).then(()=>{
