@@ -12,6 +12,11 @@ mongoose.connect(process.env.URL).then(()=>{
 
 app.use(cors())
 app.use(express.json())
+app.get("/", (req, res)=>{
+    res.status(200).json({
+        message:"welcome to oja"
+    })
+})
 app.use("/api/user", require("./Router/userRouter"))
 app.use("/api/orders", require("./Router/orderRoute"))
  
