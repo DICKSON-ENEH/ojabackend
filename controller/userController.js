@@ -110,7 +110,7 @@ const siginUsers= async(req, res)=>{
             if(passcheck){
                 const token = jwt.sign({
                     _id:user._id
-                }, process.env.JWTSECRET, {expiresIn:"30d"})
+                },"thisisoja", {expiresIn:"30d"})
                 const {password , ...info}=user._doc
                 res.status(200).json({
                     message:"signedIn",

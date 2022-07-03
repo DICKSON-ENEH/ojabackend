@@ -8,7 +8,7 @@ const verification = (req, res, next) => {
 		if (checkAuth) {
 			const token = checkAuth.split(" ")[1];
 			if (token) {
-				jwt.verify(token, process.env.JWTSECRET,(err, payload) => {
+				jwt.verify(token, "thisisoja",(err, payload) => {
 					if (err) {
 						res.status(500).json({
 							message: err.message,

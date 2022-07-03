@@ -12,7 +12,7 @@ const {    getallorders,
     const authUser = require("../utils/authorize")
 
 router.route("/:userId/createorder").post( authUser,images, creatoneuserorder)
-router.route("/allorders").get(authUser,getallorders)
+router.route("/:userId/allorders").get(authUser,getallorders)
 router.route("/:userId/oneorder").get(authUser,getoneuserorders)
 router.route("/:id/editoneorder/:orderId").patch(authUser,editoneuserorders).delete(authUser,deletePost)
 

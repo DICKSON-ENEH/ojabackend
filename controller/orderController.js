@@ -5,11 +5,16 @@ const mongoose = require("mongoose")
 
 const getallorders = async(req, res)=>{
     try {
-        const user = await userModel.find().populate("orders")
-        res.status(200).json({
-            message:"all orders",
-            data:user
-        })
+        const general = await userModel.findById(req.params.userId)
+        if(general.isAdmin){
+            const food = await orderModel.find().populate("user")
+            res.status(200).json({
+                message:"all orders",
+                data:food
+            })
+        }
+        
+    
     } catch (error) {
         console.log(error)
     }
@@ -68,7 +73,7 @@ const creatoneuserorder = async(req, res)=>{
 const deletePost = async (req, res) => {
 	try {
 		const user = await userModel.findById(req.params.userId);
-		const oder = await orderModel.findByIdAndRemove(req.params.orderId);
+		const oder = await orderModel.findByIdAndRemove(req.params.orderId); 
 
 		user.orders.pull(oder);
 		user.save();
