@@ -7,7 +7,7 @@ const getallorders = async(req, res)=>{
     try {
         const general = await userModel.findById(req.params.userId)
         if(general.isAdmin){
-            const food = await userModel.find().populate("orders")
+            const food = await orderModel.find().populate("user")
             res.status(200).json({
                 message:"all orders",
                 data:food
