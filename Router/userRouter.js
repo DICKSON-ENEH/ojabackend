@@ -9,7 +9,7 @@ const {
     createoneusers,
     createoneadmin,
     siginUsers, 
-    stockUser
+    stockuser
 
 }= require("../controller/userController")
 
