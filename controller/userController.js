@@ -78,32 +78,10 @@ const user = await userModel.create({
         console.log(error)
     }
 }
-const stockuser = async(req, res)=>{
-    try {
-     const  {fullname,password} = req.body
-const salt = await bcrypt.genSalt(10)
-const hashed = await bcrypt.hash(password, salt)
 
-
-const user = await userModel.create({
-    fullname, password:hashed
-})
-if(user){
-         const token = jwt.sign({
-                    _id:user._id
-                },"thisisoja", {expiresIn:"30d"})
-                const {password , ...info}=user._doc
-                res.status(200).json({
-                    message:"signedIn",
-                    data:{token, ...info}
-                })
-}
  
         
-    } catch (error) {
-        console.log(error)
-    }
-}
+  
 const createoneadmin = async(req, res)=>{
     try {
      const  {fullname, email, phone, password, isAdmin} = req.body
@@ -155,7 +133,6 @@ module.exports={
     deleteoneusers,
     createoneusers,
     createoneadmin,
-    siginUsers,
-    stockuser
+    siginUsers
 
 }
